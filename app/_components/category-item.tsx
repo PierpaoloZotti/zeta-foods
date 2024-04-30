@@ -7,7 +7,7 @@ type CategoryItemProps = {
 
 const CategoryItem = ({ category }: CategoryItemProps) => {
   return (
-    <div className="rounded-md p-4 shadow-md">
+    <div className="min-width-[120px] rounded-md p-4 shadow-md">
       <div className="flex items-center  gap-x-2 bg-gray-100 p-4 ">
         <Image
           src={category.imageUrl}

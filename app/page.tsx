@@ -1,4 +1,5 @@
 import prisma from "@/app/_lib/db";
+import CategoryList from "./_components/category-list";
 import Header from "./_components/header";
 import Search from "./_components/search";
 
@@ -13,6 +14,7 @@ export default async function Home() {
       <Header />
       <div className="px-5 pt-6">
         <Search />
+        <CategoryList />
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 import prisma from "@/app/_lib/db";
-import Image from "next/image";
+import Header from "./_components/header";
 
 export default async function Home() {
   const restaurantes = await prisma.restaurant.findMany({
@@ -7,5 +7,9 @@ export default async function Home() {
       categories: true,
     },
   });
-  return <main className="flex flex-col gap-4">zetafoods</main>;
+  return (
+    <main className="flex flex-col">
+      <Header />
+    </main>
+  );
 }

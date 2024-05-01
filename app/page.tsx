@@ -13,6 +13,21 @@ export default async function Home() {
       categories: true,
     },
   });
+  const products = await prisma.product.findMany({
+    where: {
+      discountPercentage: {
+        gt: 0,
+      },
+    },
+    take: 10,
+    include: {
+      restaurant: {
+        select: {
+          name: true,
+        },
+      },
+    },
+  });
   return (
     <>
       <Header />
@@ -32,7 +47,7 @@ export default async function Home() {
             <ChevronRight className="size-4" />
           </Button>
         </div>
-        <ProductList />
+        <ProductList products={products} />
       </div>
     </>
   );

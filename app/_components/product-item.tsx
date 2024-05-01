@@ -1,14 +1,18 @@
-import { Product } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import { ArrowDown } from "lucide-react";
 import Image from "next/image";
 import { calculateProductTotalPrice } from "../_helpers/price";
 
 type ProductItemProps = {
-  product: Product & {
-    restaurant: {
-      name: string;
+  product: Prisma.ProductGetPayload<{
+    include: {
+      restaurant: {
+        select: {
+          name: true;
+        };
+      };
     };
-  };
+  }>;
 };
 
 const ProductItem = ({ product }: ProductItemProps) => {

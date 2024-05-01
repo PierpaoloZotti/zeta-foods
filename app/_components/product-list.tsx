@@ -14,7 +14,6 @@ type ProductListProps = {
 };
 
 const ProductList = async ({ products }: ProductListProps) => {
-  console.log(products);
   return (
     <div className="flex gap-3 overflow-x-scroll px-5 [&::-webkit-scrollbar]:hidden ">
       {products.map((product) => (

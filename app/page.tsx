@@ -49,6 +49,11 @@ export default async function Home() {
         </div>
         <ProductList products={products} />
       </div>
+      <Banner
+        imgUrl="/BannerBurguer.png"
+        alt="Banner promocional Burger"
+        className="px-5"
+      />
     </>
   );
 }

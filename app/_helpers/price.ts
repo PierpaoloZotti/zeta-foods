@@ -9,3 +9,10 @@ export const calculateProductTotalPrice = (product: Product): number => {
     (Number(product.price) * product.discountPercentage) / 100
   );
 };
+
+export const formatPrice = (price: number): string => {
+  return Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(price);
+};

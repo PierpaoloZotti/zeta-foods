@@ -4,11 +4,12 @@ import Banner from "./_components/banner";
 import CategoryList from "./_components/category-list";
 import Header from "./_components/header";
 import ProductList from "./_components/product-list";
+import RestauranatList from "./_components/restaurants-list";
 import Search from "./_components/search";
 import { Button } from "./_components/ui/button";
 
 export default async function Home() {
-  const restaurantes = await prisma.restaurant.findMany({
+  const restaurants = await prisma.restaurant.findMany({
     include: {
       categories: true,
     },
@@ -33,7 +34,9 @@ export default async function Home() {
       <Header />
       <div className="px-5 pt-6">
         <Search />
-        <CategoryList />
+      </div>
+      <CategoryList />
+      <div className="px-5">
         <Banner imgUrl="/Banner.png" alt="Banner promocional" />
       </div>
       <div className="pt-6">
@@ -54,6 +57,19 @@ export default async function Home() {
         alt="Banner promocional Burger"
         className="px-5"
       />
+      <div className="pt-6">
+        <div className="flex items-center justify-between px-5">
+          <h2 className="font-semibold">Restaurantes Recomendados</h2>
+          <Button
+            variant="ghost"
+            className="h-fit p-0 text-primary hover:bg-transparent"
+          >
+            Ver todos
+            <ChevronRight className="size-4" />
+          </Button>
+        </div>
+        <RestauranatList restaurants={restaurants} />
+      </div>
     </>
   );
 }

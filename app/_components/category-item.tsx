@@ -7,15 +7,15 @@ type CategoryItemProps = {
 
 const CategoryItem = ({ category }: CategoryItemProps) => {
   return (
-    <div className="min-width-[120px] rounded-md p-4 shadow-md">
-      <div className="flex items-center  gap-x-2 bg-gray-100 p-4 ">
+    <div className="h-[60px]  min-w-fit rounded-md p-4 shadow">
+      <div className="flex w-full items-center justify-center gap-x-2">
         <Image
           src={category.imageUrl}
           alt={category.name}
           width={30}
           height={30}
         />
-        <span className=" font-semibold">{category.name}</span>
+        <p className=" font-semibold">{category.name}</p>
       </div>
     </div>
   );

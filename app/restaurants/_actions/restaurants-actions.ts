@@ -1,3 +1,5 @@
+"use server";
+
 import prisma from "@/app/_lib/db";
 
 export const getRestaurants = async () => {
@@ -36,6 +38,17 @@ export const getRestaurantsById = async (id: string) => {
             },
           },
         },
+      },
+    },
+  });
+};
+
+export const searchRestaurants = async (search: string) => {
+  return await prisma.restaurant.findMany({
+    where: {
+      name: {
+        contains: search,
+        mode: "insensitive",
       },
     },
   });

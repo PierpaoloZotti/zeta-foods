@@ -2,15 +2,12 @@ import { Prisma } from "@prisma/client";
 import { BikeIcon, ClockIcon, HeartIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { formatPrice } from "../_helpers/price";
 import { cn } from "../_lib/utils";
 import { Button } from "./ui/button";
 
 type RestaurantItemProps = {
-  restaurant: Prisma.RestaurantGetPayload<{
-    include: {
-      categories: true;
-    };
-  }>;
+  restaurant: Prisma.RestaurantGetPayload<{}>;
   className?: string;
 };
 
@@ -46,7 +43,7 @@ const RestaurantItem = ({ restaurant, className }: RestaurantItemProps) => {
             <BikeIcon size={16} className="text-primary" />
             {Number(restaurant.deliveryFee) > 0 ? (
               <p className="text-sm font-semibold">
-                R${restaurant.deliveryFee.toFixed(2)}
+                {formatPrice(Number(restaurant.deliveryFee))}
               </p>
             ) : (
               <p className="text-sm font-semibold">Grátis</p>

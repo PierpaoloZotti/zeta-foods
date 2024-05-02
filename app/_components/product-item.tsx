@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { calculateProductTotalPrice, formatPrice } from "../_helpers/price";
 import DiscountBadge from "./badge-discount";
-import { format } from "path";
 
 type ProductItemProps = {
   product: Prisma.ProductGetPayload<{
@@ -39,7 +38,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
         <h4 className=" mt-2 truncate text-sm">{product.name}</h4>
         <div className="flex items-baseline gap-2">
           <h3 className="text-sm font-semibold">
-            R${calculateProductTotalPrice(product).toFixed(2)}
+            {formatPrice(calculateProductTotalPrice(product))}
           </h3>
           {product.discountPercentage > 0 && (
             <span className="text-xs line-through">

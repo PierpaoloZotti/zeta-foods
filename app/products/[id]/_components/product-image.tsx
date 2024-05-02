@@ -2,7 +2,7 @@
 
 import { Button } from "@/app/_components/ui/button";
 import { Product } from "@prisma/client";
-import { ChevronLeft, HeartIcon } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -12,7 +12,7 @@ type ProductImageProps = {
 const ProductImage = ({ product }: ProductImageProps) => {
   const router = useRouter();
   return (
-    <div className="relative h-[360px] w-full">
+    <div className="relative h-[360px] w-full ">
       <Image src={product.imageUrl} alt={product.name} fill objectFit="cover" />
 
       <Button

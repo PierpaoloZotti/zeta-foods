@@ -44,10 +44,7 @@ const ProductDetails = ({
       <div className="flex justify-between px-5">
         <div className="flex flex-col">
           <div className="flex items-center gap-x-2">
-            <h2 className="font-semibold">
-              {/* R$ {calculateProductTotalPrice(product)} */}
-              {formatPrice(totalPrice)}
-            </h2>
+            <h2 className="font-semibold">{formatPrice(totalPrice)}</h2>
             {product.discountPercentage > 0 && (
               <DiscountBadge discountPercentage={product.discountPercentage} />
             )}

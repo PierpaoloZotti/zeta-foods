@@ -35,7 +35,7 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
   return (
     <div>
       <ProductImage product={product} />
-      <div>
+      <div className=" relative -my-4 rounded-t-2xl bg-neutral-50">
         <div className="flex items-center gap-x-4 p-5">
           <div className="relative size-6">
             <Image

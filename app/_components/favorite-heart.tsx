@@ -14,7 +14,7 @@ const FavoriteIcon = ({ className }: FavoriteIconProps) => {
       )}
       size="icon"
     >
-      <HeartIcon className="" />
+      <HeartIcon className="fill-white text-white" />
     </Button>
   );
 };

@@ -1,11 +1,12 @@
 "use client";
 
 import DiscountBadge from "@/app/_components/badge-discount";
+import DeliveryDetails from "@/app/_components/delivery-details";
 import ProductList from "@/app/_components/product-list";
 import { Button } from "@/app/_components/ui/button";
 import { calculateProductTotalPrice, formatPrice } from "@/app/_helpers/price";
 import { Prisma } from "@prisma/client";
-import { BikeIcon, ChevronDown, ChevronUp, Clock } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 
 type ProductDetailsProps = {
@@ -72,30 +73,10 @@ const ProductDetails = ({
           </div>
         </div>
       </div>
-      <div className="mx-5 my-6 flex justify-between rounded-md border border-muted-foreground/40 px-12 py-2.5 shadow">
-        <div className="flex flex-col items-center gap-1">
-          <div className="flex items-center gap-2 ">
-            <BikeIcon size={18} />
-            <span className="text-xs text-muted-foreground">Entrega</span>
-          </div>
-          {Number(product.restaurant.deliveryFee) > 0 ? (
-            <span className="text-sm font-semibold">
-              {formatPrice(Number(product.restaurant.deliveryFee))}
-            </span>
-          ) : (
-            <span className="text-sm font-semibold">Grátis</span>
-          )}
-        </div>
-        <div className="flex flex-col items-center gap-1">
-          <div className="flex items-center gap-2 ">
-            <Clock size={18} />
-            <span className="text-xs text-muted-foreground">Entrega</span>
-          </div>
-          <span className="text-sm font-semibold">
-            {product.restaurant.deliveryTimeMinutes} min
-          </span>
-        </div>
-      </div>
+      <DeliveryDetails
+        deliveryFee={Number(product.restaurant.deliveryFee)}
+        deliveryTimeMinutes={product.restaurant.deliveryTimeMinutes}
+      />
       <h2 className="mb-3 px-5 text-lg  font-semibold">Sobre</h2>
       <p className="px-5 text-muted-foreground">{product.description}</p>
       <h2 className="my-3 px-5 text-lg  font-semibold">Sucos</h2>

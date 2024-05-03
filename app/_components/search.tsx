@@ -17,16 +17,16 @@ const Search = () => {
     router.push(`/restaurants?search=${search}`);
   };
   return (
-    <div className="flex gap-2">
+    <form className="flex gap-2" action={handleSearchSubmit}>
       <Input
         placeholder="Buscar restaurantes..."
         className="border-none"
         onChange={handleSearch}
       />
-      <Button size="icon" onClick={handleSearchSubmit}>
+      <Button size="icon" type="submit">
         <SearchIcon size={18} />
       </Button>
-    </div>
+    </form>
   );
 };
 

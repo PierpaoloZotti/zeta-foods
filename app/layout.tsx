@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Quicksand } from 'next/font/google'
 import { CartProvider } from './_context/cart'
 import { cn } from './_lib/utils'
+import { AuthProvider } from './_providers/authProvider'
 import './globals.css'
 
 const font = Quicksand({ subsets: ['latin'] })
@@ -19,7 +20,9 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={cn('bg-neutral-50', font.className)}>
-                <CartProvider>{children}</CartProvider>
+                <AuthProvider>
+                    <CartProvider>{children}</CartProvider>
+                </AuthProvider>
             </body>
         </html>
     )

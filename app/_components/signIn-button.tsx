@@ -1,15 +1,20 @@
-import { signIn } from '@/auth'
+'use client'
+
+import { LogInIcon } from 'lucide-react'
+import { signIn } from 'next-auth/react'
+import { cn } from '../_lib/utils'
 import { Button } from './ui/button'
 
-export function SignIn() {
+type SignInProps = {
+    className?: string
+}
+export function SignIn({ className }: SignInProps) {
     return (
-        <form
-            action={async () => {
-                'use server'
-                await signIn('google')
-            }}
-        >
-            <Button type="submit">Signin</Button>
-        </form>
+        <Button type="submit" variant={'link'} onClick={() => signIn()}>
+            <div className="flex items-center gap-2">
+                <span className="text-muted-foreground">Faça seu Log in</span>
+                <LogInIcon className={cn('size-4', className)} />
+            </div>
+        </Button>
     )
 }
